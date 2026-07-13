@@ -49,7 +49,7 @@ export default function Header({ onContactClick, onNavigate }: HeaderProps) {
             className="flex items-center space-x-3.5 text-left cursor-pointer group focus:outline-none"
           >
             {/* 1:1 square logo container */}
-            <div className="w-[40px] h-[40px] md:w-[52px] md:h-[52px] bg-white border border-border-custom flex items-center justify-center flex-shrink-0 overflow-hidden rounded-md">
+            <div className="w-[40px] h-[40px] md:w-[52px] md:h-[52px] bg-white flex items-center justify-center flex-shrink-0 overflow-hidden rounded-md">
               <img
                 src="https://res.cloudinary.com/dtkluxukm/image/upload/v1783945278/Simple_D_Letter_Logo_1_me2lyn.png"
                 alt="Mathcomb Logo"
@@ -123,7 +123,7 @@ export default function Header({ onContactClick, onNavigate }: HeaderProps) {
             >
               <div className="space-y-10 mt-16">
                 <div className="flex items-center space-x-3 pb-6 border-b border-border-custom">
-                  <div className="w-[40px] h-[40px] bg-white border border-border-custom flex items-center justify-center flex-shrink-0 overflow-hidden rounded-md">
+                  <div className="w-[40px] h-[40px] bg-white flex items-center justify-center flex-shrink-0 overflow-hidden rounded-md">
                     <img
                       src="https://res.cloudinary.com/dtkluxukm/image/upload/v1783945278/Simple_D_Letter_Logo_1_me2lyn.png"
                       alt="Mathcomb Logo"

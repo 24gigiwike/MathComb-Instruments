@@ -54,10 +54,7 @@ export default function ContactSection({ isOpen, setIsOpen }: ContactSectionProp
           <span className="font-semibold text-text-black">Mathcomb™ Musical Instruments?</span>
         </h2>
 
-        {/* Text */}
-        <p className="text-neutral-500 text-sm max-w-md mx-auto leading-relaxed">
-          Arrange a private audition at our Lagos showroom or receive a custom catalog curated for your church, studio, or conservatory.
-        </p>
+
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
