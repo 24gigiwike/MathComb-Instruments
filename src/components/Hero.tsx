@@ -1,5 +1,6 @@
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { motion } from 'motion/react';
+import acousticHeroImg from '../assets/images/mathcomb_hero_acoustic_1783944204761.jpg';
 
 interface HeroProps {
   onExploreClick: () => void;
@@ -102,7 +103,7 @@ export default function Hero({ onExploreClick, onAboutClick }: HeroProps) {
             
             <div className="flex-1 overflow-hidden relative border border-border-custom">
               <img
-                src="/src/assets/images/mathcomb_hero_acoustic_1783944204761.jpg"
+                src={acousticHeroImg}
                 alt="Mathcomb™ Musical Instruments Series-A Acoustic Guitar"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"

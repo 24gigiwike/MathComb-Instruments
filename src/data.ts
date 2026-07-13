@@ -1,4 +1,7 @@
 import { Product, GalleryItem, Testimonial } from './types';
+import acousticHeroImg from './assets/images/mathcomb_hero_acoustic_1783944204761.jpg';
+import featuredPianoImg from './assets/images/mathcomb_featured_piano_1783944218512.jpg';
+import violinDetailImg from './assets/images/mathcomb_violin_detail_1783944247623.jpg';
 
 export const products: Product[] = [
   {
@@ -8,7 +11,7 @@ export const products: Product[] = [
     category: 'Stringed Instruments',
     brief: 'A steel-string acoustic guitar carefully selected for its rich tone, featuring a solid sitka spruce top and premium mahogany back.',
     description: 'The Mathcomb™ Musical Instruments Series-A represents our dedication to acoustic purity. Curated for concert performers, recording artists, and worship leaders, it features an expertly designed bracing system that enhances resonance and provides pristine clarity across the entire dynamic range.',
-    image: '/src/assets/images/mathcomb_hero_acoustic_1783944204761.jpg',
+    image: acousticHeroImg,
     highlights: [
       'Carefully selected solid spruce soundboard for exceptional clarity',
       'Seasoned mahogany neck with premium rosewood fingerboard',
@@ -33,7 +36,7 @@ export const products: Product[] = [
     category: 'Keyboards & Pianos',
     brief: 'An 88-key triple-sensor hammer-action stage piano with natural solid wood keys and authentic response.',
     description: 'Sourced for churches, premium music schools, and professional studios, the Forte-88 combines the complex acoustic resonance of a concert grand piano with modern state-of-the-art digital modeling. Premium wooden keybeds deliver an authentic, expressive mechanical touch.',
-    image: '/src/assets/images/mathcomb_featured_piano_1783944218512.jpg',
+    image: featuredPianoImg,
     highlights: [
       'Graded hammer-action with solid wood keys and synthetic ivory touch',
       'Advanced dual-DSP modeling engine mimicking cabinet resonance',
@@ -58,7 +61,7 @@ export const products: Product[] = [
     category: 'Stringed Instruments',
     brief: 'A professional orchestral violin selected from seasoned Bosnian maple and European spruce.',
     description: 'The Lyric-V features a rich, projecting voice with mature overtone profiles. Carefully sourced from skilled instrument makers, every piece features precise plate thicknesses that sing beautifully under any bow stroke. Perfect for soloists, conservatories, and professional orchestras.',
-    image: '/src/assets/images/mathcomb_violin_detail_1783944247623.jpg',
+    image: violinDetailImg,
     highlights: [
       'Select solid European spruce top, aged for a minimum of 10 years',
       'Beautifully flamed two-piece Bosnian maple back',
