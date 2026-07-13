@@ -1,0 +1,6 @@
+{
+  "name": "Mathcomb Musical Instruments",
+  "description": "Precision Crafted. Professionally Played. Discover the Mathcomb™ series of musical instruments engineered for musicians, educators, churches, studios, and professional performers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
