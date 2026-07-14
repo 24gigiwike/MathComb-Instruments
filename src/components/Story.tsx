@@ -26,28 +26,40 @@ export default function Story() {
           {/* Heading and Bio */}
           <div className="lg:col-span-9 space-y-8">
             <h2 className="font-display font-light text-3xl sm:text-4xl text-text-black tracking-tight leading-tight">
-              Providing quality musical instruments,{' '}
-              <span className="font-semibold text-text-black">trusted in Lagos.</span>
+              Honoring the journey of an original{' '}
+              <span className="font-semibold text-text-black">West African invention.</span>
             </h2>
 
             {/* Founder Profile Block */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start pt-6 border-t border-border-custom">
-              <div className="md:col-span-4 space-y-1.5">
-                <p className="font-display font-semibold text-base text-text-black">
-                  {companyStory.foundersName}
-                </p>
-                <p className="text-[10px] tracking-widest uppercase font-mono text-neutral-400">
-                  {companyStory.role}
-                </p>
-                <div className="pt-4 text-xs font-mono text-neutral-400 border-t border-border-custom mt-4 md:hidden">
-                  LAGOS, NIGERIA
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center pt-6 border-t border-border-custom">
+              {/* Creator High-Res Portrait */}
+              <div className="md:col-span-5 space-y-4">
+                <div className="w-full bg-white border border-border-custom p-1.5 rounded-xl shadow-sm">
+                  <div className="w-full overflow-hidden rounded-lg border border-border-custom">
+                    <img
+                      src="https://res.cloudinary.com/dtkluxukm/image/upload/v1784036238/FB_IMG_1763989647831_imag2n.jpg"
+                      alt={companyStory.foundersName}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-1">
+                  <p className="font-display font-semibold text-base text-text-black">
+                    {companyStory.foundersName}
+                  </p>
+                  <p className="text-[10px] tracking-widest uppercase font-mono text-neutral-400">
+                    {companyStory.role}
+                  </p>
                 </div>
               </div>
 
-              <div className="md:col-span-8">
-                <p className="text-neutral-500 text-sm sm:text-base leading-relaxed font-sans">
-                  {companyStory.bio}
-                </p>
+              <div className="md:col-span-7 space-y-4">
+                {companyStory.bio.split('\n\n').map((paragraph, index) => (
+                  <p key={index} className="text-neutral-500 text-sm sm:text-base leading-relaxed font-sans">
+                    {paragraph}
+                  </p>
+                ))}
               </div>
             </div>
           </div>

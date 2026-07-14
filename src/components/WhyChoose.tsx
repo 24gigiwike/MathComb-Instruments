@@ -5,20 +5,20 @@ export default function WhyChoose() {
   const points = [
     {
       icon: Award,
-      title: 'Expert Selection',
-      description: 'Every instrument is hand-selected and carefully evaluated by experienced musicians to guarantee professional playability right out of the box.',
+      title: 'Acoustic Singularity',
+      description: 'A completely new sound architecture. By translating mechanical vibrations through a micro-tined comb resonator, Mathcomb™ Musical Instruments creates an organic, rich timber that conventional instruments cannot replicate.',
       index: '01'
     },
     {
       icon: ShieldCheck,
-      title: 'Precision Setup',
-      description: 'Individually inspected and set up for consistent sound projection, accurate pitch stability, and reliable long-term performance.',
+      title: 'The Comb Genesis',
+      description: 'What started as an everyday hair comb in a Lagos workshop was scientifically modeled, tested, and fine-tuned for perfect resonance, precise pitch stability, and pure projection.',
       index: '02'
     },
     {
       icon: Music,
-      title: 'Trusted Performance',
-      description: 'The preferred choice for churches, schools, recording studios, and live orchestral performances across Nigeria.',
+      title: 'Invention of a Voice',
+      description: 'Rather than mimicking existing standards, Mathcomb™ Musical Instruments opens a new chapter in music history—offering composers, worship leaders, and session artists a completely fresh acoustic canvas.',
       index: '03'
     }
   ];
@@ -34,11 +34,11 @@ export default function WhyChoose() {
           <div className="flex items-center space-x-3">
             <span className="w-6 h-[1px] bg-brand-green" />
             <span className="text-[10px] tracking-[0.25em] uppercase font-semibold text-text-black font-mono">
-              Why Mathcomb™ Musical Instruments
+              The Invention Ethos
             </span>
           </div>
           <h2 className="font-display font-light text-3xl sm:text-4xl text-text-black tracking-tight">
-            Chosen by those who <span className="font-semibold text-text-black">know the difference.</span>
+            Crafted for those who <span className="font-semibold text-text-black">seek a new sound.</span>
           </h2>
         </div>
 

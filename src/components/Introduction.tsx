@@ -30,7 +30,7 @@ export default function Introduction() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="font-display font-light text-3xl sm:text-4xl text-text-black tracking-tight max-w-3xl leading-snug"
             >
-              Built for musicians who <span className="font-semibold text-text-black">demand excellence.</span>
+              Born from curiosity. <span className="font-semibold text-text-black">Refined into an original acoustic masterpiece.</span>
             </motion.h2>
 
             <motion.div
@@ -41,10 +41,10 @@ export default function Introduction() {
               className="grid grid-cols-1 md:grid-cols-2 gap-8 text-neutral-500 text-sm sm:text-base leading-relaxed max-w-4xl"
             >
               <p>
-                Mathcomb™ Musical Instruments is a trusted partner for musicians, churches, schools, and recording studios seeking reliable, high-quality instruments. Founded in Lagos, Nigeria, by an experienced professional musician, our brand focuses on helping you find the perfect sound with expert advice, careful selection, and a commitment to serving live stages and sacred settings alike.
+                The story of Mathcomb™ Musical Instruments is the story of Mathias Edema Eyeturami, a visionary musician who dared to challenge the acoustic boundaries of modern sound. In his workshop in Yaba, Lagos, Mathias spent years studying the vibrational frequencies of standard hair combs. He discovered that by micro-tuning high-tension spring-steel tines and physically coupling them with a seasoned acoustic soundboard, he could unlock a haunting, shimmering voice never heard before.
               </p>
               <p>
-                We believe that every performer in West Africa deserves access to dependable, premium instrumentation without compromise. By supplying carefully selected instruments and equipment from trusted makers, we help you choose confidently, ensuring every piece of gear elevates your play and adapts beautifully to any climate.
+                Today, Mathcomb™ Musical Instruments represents the birthplace of this original acoustic category. Rather than reproducing conventional instruments, we craft hybrid resonators that directly house Mathias's patented comb-resonance engine. Each piece is a testament to Nigerian innovation, artistic persistence, and organic design, giving artists a totally new mechanical voice to express their music on stage, in studios, and in houses of worship.
               </p>
             </motion.div>
           </div>

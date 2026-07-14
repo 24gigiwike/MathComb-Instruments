@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Introduction from './components/Introduction';
-import FeaturedProduct from './components/FeaturedProduct';
+import ThreeDMockup from './components/ThreeDMockup';
 import WhyChoose from './components/WhyChoose';
 import Story from './components/Story';
 import ContactSection from './components/ContactSection';
@@ -32,13 +32,13 @@ export default function App() {
       <main>
         {/* Core Sections */}
         <Hero
-          onExploreClick={() => handleNavigate('featured-product')}
+          onExploreClick={() => handleNavigate('performance-archive')}
           onAboutClick={() => handleNavigate('brand-introduction')}
         />
         
         <Introduction />
-        
-        <FeaturedProduct />
+
+        <ThreeDMockup />
         
         <WhyChoose />
         

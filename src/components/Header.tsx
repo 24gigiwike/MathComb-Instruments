@@ -21,9 +21,9 @@ export default function Header({ onContactClick, onNavigate }: HeaderProps) {
 
   const menuItems = [
     { name: 'Home', id: 'hero' },
-    { name: 'Products', id: 'featured-product' },
-    { name: 'About', id: 'company-story' },
-    { name: 'Contact', id: 'contact-cta' }
+    { name: 'The Invention', id: 'featured-product' },
+    { name: 'The Story', id: 'company-story' },
+    { name: 'Inquire', id: 'contact-cta' }
   ];
 
   const handleItemClick = (id: string) => {
@@ -85,7 +85,7 @@ export default function Header({ onContactClick, onNavigate }: HeaderProps) {
               onClick={() => handleItemClick('featured-product')}
               className="hidden md:inline-flex items-center justify-center text-[12px] font-medium uppercase tracking-wider bg-brand-green hover:bg-brand-green-hover text-white px-6 py-3 rounded-[8px] transition-colors duration-200 cursor-pointer border-0 outline-none"
             >
-              Explore Products
+              Explore the Invention
             </button>
 
             <button
@@ -158,10 +158,10 @@ export default function Header({ onContactClick, onNavigate }: HeaderProps) {
                   }}
                   className="w-full text-center text-[12px] font-medium uppercase tracking-wider bg-brand-green hover:bg-brand-green-hover text-white py-3.5 rounded-[8px] transition-colors duration-200 cursor-pointer"
                 >
-                  Explore Products
+                  Explore the Invention
                 </button>
                 <p className="text-[10px] text-neutral-400 tracking-wider text-center uppercase font-mono">
-                  Lagos, Nigeria • Founded by Mathias Eyeturami
+                  Lagos, Nigeria • Invented by Mathias Eyeturami
                 </p>
               </div>
             </motion.div>

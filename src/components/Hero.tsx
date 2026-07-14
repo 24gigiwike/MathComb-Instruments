@@ -1,6 +1,13 @@
-import { ArrowRight, ChevronDown } from 'lucide-react';
-import { motion } from 'motion/react';
-import acousticHeroImg from '../assets/images/mathcomb_hero_acoustic_1783944204761.jpg';
+import { useState } from 'react';
+import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+
+const sketch1 = 'https://res.cloudinary.com/dtkluxukm/image/upload/v1784028375/slide3_z2n9s0.jpg';
+const sketch2 = 'https://res.cloudinary.com/dtkluxukm/image/upload/v1784028375/IMG-20251015-WA0083_rw0naw.jpg';
+const sketch3 = 'https://res.cloudinary.com/dtkluxukm/image/upload/v1784028375/slide4_bcnlmn.jpg';
+const sketch4 = 'https://res.cloudinary.com/dtkluxukm/image/upload/v1784028375/slide2_he2uxm.jpg';
+const sketch5 = 'https://res.cloudinary.com/dtkluxukm/image/upload/v1784028375/slide1_g0bqyp.jpg';
+const sketch6 = 'https://res.cloudinary.com/dtkluxukm/image/upload/v1784028375/slide5_pbfaps.jpg';
 
 interface HeroProps {
   onExploreClick: () => void;
@@ -8,6 +15,25 @@ interface HeroProps {
 }
 
 export default function Hero({ onExploreClick, onAboutClick }: HeroProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const sketches = [
+    { src: sketch1, desc: 'sketch 1' },
+    { src: sketch2, desc: 'sketch 2' },
+    { src: sketch3, desc: 'sketch 3' },
+    { src: sketch4, desc: 'sketch 4' },
+    { src: sketch5, desc: 'sketch 5' },
+    { src: sketch6, desc: 'sketch 6' },
+  ];
+
+  const nextSketch = () => {
+    setActiveIndex((prev) => (prev + 1) % sketches.length);
+  };
+
+  const prevSketch = () => {
+    setActiveIndex((prev) => (prev - 1 + sketches.length) % sketches.length);
+  };
+
   return (
     <section
       id="hero"
@@ -28,8 +54,8 @@ export default function Hero({ onExploreClick, onAboutClick }: HeroProps) {
             </p>
             {/* Editorial Headline */}
             <h1 className="font-display font-semibold text-5xl sm:text-6xl xl:text-7xl text-text-black leading-[0.95] tracking-tight">
-              Helping Musicians<br />
-              <span className="font-semibold text-text-black">Find the Right Instrument.</span>
+              From an Everyday Comb.<br />
+              <span className="font-semibold text-text-black">An Original Musical Instrument.</span>
             </h1>
           </motion.div>
 
@@ -39,7 +65,7 @@ export default function Hero({ onExploreClick, onAboutClick }: HeroProps) {
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="text-neutral-500 text-sm sm:text-base max-w-md leading-relaxed font-sans"
           >
-            Discover carefully selected, dependable instruments and professional music equipment for worship, learning, recording, and live performance.
+            Discover the invention of Mathcomb™ Musical Instruments, a pioneering acoustic breakthrough by Mathias Edema Eyeturami. Born from a simple comb and refined into a performance-grade acoustic miracle, it introduces an entirely new sound class to the world of music.
           </motion.p>
 
           {/* Action CTAs */}
@@ -54,7 +80,7 @@ export default function Hero({ onExploreClick, onAboutClick }: HeroProps) {
               onClick={onExploreClick}
               className="group flex items-center justify-center space-x-2 text-[13px] font-medium uppercase tracking-wider bg-brand-green hover:bg-brand-green-hover text-white px-8 py-4 rounded-[8px] transition-colors duration-200 cursor-pointer border-0 outline-none"
             >
-              <span>Explore Products</span>
+              <span>Explore the Invention</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </button>
 
@@ -63,58 +89,81 @@ export default function Hero({ onExploreClick, onAboutClick }: HeroProps) {
               onClick={onAboutClick}
               className="flex items-center justify-center space-x-2 text-[13px] font-medium uppercase tracking-wider border border-text-black bg-transparent text-text-black px-8 py-4 rounded-[8px] transition-all duration-200 hover:bg-text-black hover:text-white cursor-pointer"
             >
-              <span>Our Story</span>
+              <span>The Inventor's Story</span>
             </button>
-          </motion.div>
-
-          {/* Metadata stats */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="pt-8 border-t border-border-custom grid grid-cols-3 gap-4"
-          >
-            <div>
-              <p className="font-mono text-xs font-semibold text-text-black">EST. 2019</p>
-              <p className="text-[10px] text-neutral-400 tracking-wider uppercase mt-1 font-mono">Lagos Showroom</p>
-            </div>
-            <div>
-              <p className="font-mono text-xs font-semibold text-text-black">100%</p>
-              <p className="text-[10px] text-neutral-400 tracking-wider uppercase mt-1 font-mono">Musician Curated</p>
-            </div>
-            <div>
-              <p className="font-mono text-xs font-semibold text-text-black">WEST AFRICA</p>
-              <p className="text-[10px] text-neutral-400 tracking-wider uppercase mt-1 font-mono">Distribution</p>
-            </div>
           </motion.div>
         </div>
 
-        {/* Right Image Block */}
+        {/* Right Image Block - 1:1 Sketch Carousel */}
         <div className="lg:col-span-5 flex justify-center items-center relative pl-0 lg:pl-12 w-full">
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full aspect-[3/4] bg-white overflow-hidden relative group border border-border-custom p-6 flex flex-col justify-between"
+            className="w-full max-w-[460px] aspect-square bg-white overflow-hidden relative group border border-border-custom p-6 flex flex-col justify-between"
           >
-            <div className="text-[10px] uppercase tracking-widest text-[#6B7280] font-mono mb-4">
-              Featured // M1 SERIES
+            {/* Top Bar with Stage details */}
+            <div className="flex items-center justify-between text-[10px] uppercase tracking-widest text-[#6B7280] font-mono mb-4">
+              <span>Development Stage {activeIndex + 1} of 6</span>
+              <span className="text-brand-green font-semibold">Blueprint Sketch</span>
             </div>
             
-            <div className="flex-1 overflow-hidden relative border border-border-custom">
-              <img
-                src={acousticHeroImg}
-                alt="Mathcomb™ Musical Instruments Series-A Acoustic Guitar"
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
-              />
+            {/* Carousel display area */}
+            <div className="flex-1 overflow-hidden relative border border-border-custom bg-neutral-50 flex items-center justify-center">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={activeIndex}
+                  src={sketches[activeIndex].src}
+                  alt={`Mathcomb Development Sketch Stage ${activeIndex + 1}`}
+                  referrerPolicy="no-referrer"
+                  initial={{ opacity: 0, scale: 1.02 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.4 }}
+                  className="w-full h-full object-cover select-none"
+                />
+              </AnimatePresence>
+
+              {/* Navigation controls */}
+              <button
+                onClick={prevSketch}
+                className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 border border-border-custom text-neutral-800 hover:bg-white hover:scale-105 transition-all z-10 cursor-pointer shadow-sm outline-none"
+                aria-label="Previous sketch"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={nextSketch}
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 border border-border-custom text-neutral-800 hover:bg-white hover:scale-105 transition-all z-10 cursor-pointer shadow-sm outline-none"
+                aria-label="Next sketch"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+
+              {/* Dot Indicators */}
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-1.5 z-10 bg-white/80 px-3 py-1.5 rounded-full border border-border-custom/50">
+                {sketches.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveIndex(idx)}
+                    className={`w-1.5 h-1.5 rounded-full transition-colors cursor-pointer outline-none ${
+                      idx === activeIndex ? 'bg-brand-green' : 'bg-neutral-300'
+                    }`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
             </div>
 
-            <div className="mt-4 flex items-center justify-between">
-              <span className="text-[11px] uppercase tracking-[0.2em] opacity-60 font-mono">Mathcomb™ Musical Instruments Series-A</span>
+            {/* Bottom Bar: "original sketch" & Description */}
+            <div className="mt-4 flex items-center justify-between border-t border-border-custom/50 pt-3">
+              <span className="text-[11px] uppercase tracking-[0.2em] font-mono font-bold text-text-black">
+                original sketch
+              </span>
               <div className="text-right">
-                <div className="text-[11px] font-bold">Premium Solid Spruce Top</div>
-                <div className="text-[9px] text-[#6B7280] uppercase tracking-widest font-mono">Premium Grade AA</div>
+                <div className="text-[11px] text-neutral-500 font-mono italic">
+                  {sketches[activeIndex].desc}
+                </div>
               </div>
             </div>
           </motion.div>

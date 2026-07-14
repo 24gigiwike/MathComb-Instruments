@@ -18,65 +18,38 @@ export default function Footer({ onNavigate, onContactClick }: FooterProps) {
         {/* Brand & Section links */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           {/* Column 1: Brand Info */}
-          <div className="md:col-span-5 space-y-4">
+          <div className="md:col-span-6 space-y-4">
             <h3 className="font-display font-medium text-base tracking-wider uppercase text-text-black">
               Mathcomb™ Musical Instruments
             </h3>
             <p className="text-neutral-500 text-xs max-w-sm leading-relaxed">
-              A trusted music brand and retailer, supplying carefully selected musical instruments and equipment to musicians, churches, schools, studios, and music enthusiasts.
+              The birthplace of an original musical invention. Conceived from a simple hair comb and refined in Lagos, Nigeria, introducing an entirely new organic voice and resonance architecture to the world of music.
             </p>
           </div>
 
-          {/* Column 2: Quick Links */}
+          {/* Column 2: Corporate Info */}
           <div className="md:col-span-3 space-y-4">
             <h4 className="text-[10px] tracking-widest uppercase font-mono text-neutral-400 font-semibold">
-              Instruments
-            </h4>
-            <div className="flex flex-col space-y-2 text-xs">
-              <button
-                onClick={() => onNavigate('featured-product')}
-                className="text-left text-neutral-600 hover:text-brand-green transition-colors cursor-pointer"
-              >
-                Series-A Acoustic
-              </button>
-              <button
-                onClick={() => onNavigate('featured-product')}
-                className="text-left text-neutral-600 hover:text-brand-green transition-colors cursor-pointer"
-              >
-                Forte-88 Stage Piano
-              </button>
-              <button
-                onClick={() => onNavigate('featured-product')}
-                className="text-left text-neutral-600 hover:text-brand-green transition-colors cursor-pointer"
-              >
-                Lyric-V Violin
-              </button>
-            </div>
-          </div>
-
-          {/* Column 3: Corporate Info */}
-          <div className="md:col-span-2 space-y-4">
-            <h4 className="text-[10px] tracking-widest uppercase font-mono text-neutral-400 font-semibold">
-              Company
+              Invention Journey
             </h4>
             <div className="flex flex-col space-y-2 text-xs">
               <button
                 onClick={() => onNavigate('brand-introduction')}
                 className="text-left text-neutral-600 hover:text-brand-green transition-colors cursor-pointer"
               >
-                About
+                About Mathcomb™ Musical Instruments
               </button>
               <button
                 onClick={() => onNavigate('company-story')}
                 className="text-left text-neutral-600 hover:text-brand-green transition-colors cursor-pointer"
               >
-                CEO & Founder
+                Meet the Inventor
               </button>
             </div>
           </div>
 
-          {/* Column 4: Contact Shortcuts */}
-          <div className="md:col-span-2 space-y-4">
+          {/* Column 3: Contact Shortcuts */}
+          <div className="md:col-span-3 space-y-4">
             <h4 className="text-[10px] tracking-widest uppercase font-mono text-neutral-400 font-semibold">
               Support
             </h4>

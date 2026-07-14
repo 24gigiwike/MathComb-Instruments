@@ -43,15 +43,15 @@ export default function ContactSection({ isOpen, setIsOpen }: ContactSectionProp
         <div className="flex items-center justify-center space-x-3">
           <span className="w-6 h-[1px] bg-brand-green" />
           <span className="text-[10px] tracking-[0.25em] uppercase font-mono text-text-black">
-            Consultation & Sales
+            Inquiry & Collaboration
           </span>
           <span className="w-6 h-[1px] bg-brand-green" />
         </div>
 
         {/* Heading */}
         <h2 className="font-display font-light text-4xl sm:text-5xl text-text-black tracking-tight leading-tight max-w-2xl mx-auto">
-          Ready to experience <br />
-          <span className="font-semibold text-text-black">Mathcomb™ Musical Instruments?</span>
+          Ready to experience the <br />
+          <span className="font-semibold text-text-black">Mathcomb™ Musical Instruments Invention?</span>
         </h2>
 
 
@@ -116,10 +116,10 @@ export default function ContactSection({ isOpen, setIsOpen }: ContactSectionProp
                 <div className="flex items-center justify-between border-b border-border-custom pb-5">
                   <div className="space-y-1">
                     <p className="text-[9px] tracking-widest text-neutral-400 uppercase font-mono">
-                      Mathcomb™ Musical Instruments // Inquiry
+                      Mathcomb™ Musical Instruments // Inquiry & Collaboration
                     </p>
                     <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-text-black">
-                      Request Catalog or Audition
+                      Connect with the Invention
                     </h3>
                   </div>
                   <button
@@ -210,10 +210,10 @@ export default function ContactSection({ isOpen, setIsOpen }: ContactSectionProp
                         onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
                         className="bg-white border border-border-custom p-3 text-xs text-text-black rounded-[8px] focus:outline-none focus:border-brand-green transition-colors"
                       >
-                        <option value="acoustic-guitar">Mathcomb™ Musical Instruments Series-A Acoustic</option>
-                        <option value="stage-piano">Mathcomb™ Musical Instruments Forte-88 Keyboard</option>
-                        <option value="violin">Mathcomb™ Musical Instruments Lyric-V Violin</option>
-                        <option value="custom">Other Instruments / General Inquiry</option>
+                        <option value="acoustic-guitar">Mathcomb™ Musical Instruments Series-A (Acoustic Resonator)</option>
+                        <option value="stage-piano">Mathcomb™ Musical Instruments Forte-88 (Polyphonic Resonator)</option>
+                        <option value="violin">Mathcomb™ Musical Instruments Lyric-V (Bowed Resonator)</option>
+                        <option value="custom">Inquiry / Research Collaboration</option>
                       </select>
                     </div>
 
@@ -262,7 +262,7 @@ export default function ContactSection({ isOpen, setIsOpen }: ContactSectionProp
 
               {/* Bottom footer */}
               <div className="text-[10px] text-neutral-400 text-center tracking-wide uppercase pt-8">
-                Mathcomb™ Musical Instruments • Yaba Showroom, Lagos • Established 2019
+                Mathcomb™ Musical Instruments • Yaba Laboratory, Lagos • Established 2019
               </div>
             </motion.div>
           </motion.div>
