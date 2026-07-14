@@ -65,7 +65,7 @@ export default function Hero({ onExploreClick, onAboutClick }: HeroProps) {
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="text-neutral-500 text-sm sm:text-base max-w-md leading-relaxed font-sans"
           >
-            Discover the invention of Mathcomb™ Musical Instruments, a pioneering acoustic breakthrough by Mathias Edema Eyeturami. Born from a simple comb and refined into a performance-grade acoustic miracle, it introduces an entirely new sound class to the world of music.
+            Discover the invention of Mathcomb™ Musical Instruments, a pioneering acoustic breakthrough by Mathias Edema Eyeturami. Born from a simple comb and refined into a performance-grade acoustic miracle, it is played to produce soulful, saxophone-like melodies, introducing an entirely new class of sound to the world of music.
           </motion.p>
 
           {/* Action CTAs */}

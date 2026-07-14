@@ -288,7 +288,7 @@ export default function ThreeDMockup() {
               </button>
 
               {/* 16:9 Responsive Video Frame */}
-              <div className="relative aspect-video w-full bg-black border-b border-neutral-800">
+              <div className="relative aspect-video w-full bg-black">
                 <video
                   ref={modalVideoRef}
                   src={selectedVideo.videoUrl}
@@ -298,26 +298,6 @@ export default function ThreeDMockup() {
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-contain"
                 />
-              </div>
-
-              {/* Video Details section */}
-              <div className="p-6 sm:p-8 space-y-3 bg-neutral-950 text-left">
-                <div className="flex flex-wrap items-center justify-between gap-3 text-[10px] uppercase tracking-wider text-neutral-400 font-mono">
-                  <span className="flex items-center gap-1.5 font-semibold text-brand-green">
-                    <Video className="w-3.5 h-3.5" />
-                    Live Recording • {selectedVideo.date}
-                  </span>
-                  <span>{selectedVideo.venue}</span>
-                </div>
-
-                <div className="space-y-1.5">
-                  <h3 id="modal-title" className="font-display font-medium text-lg sm:text-xl text-white tracking-tight leading-snug">
-                    {selectedVideo.title}
-                  </h3>
-                  <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed font-sans font-light">
-                    {selectedVideo.description}
-                  </p>
-                </div>
               </div>
 
             </motion.div>
