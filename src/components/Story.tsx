@@ -1,7 +1,25 @@
+import React, { useState } from 'react';
 import { companyStory } from '../data';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
+
+const GALLERY_IMAGES = [
+  "https://res.cloudinary.com/dtkluxukm/image/upload/v1784036238/FB_IMG_1763989647831_imag2n.jpg",
+  "https://res.cloudinary.com/dtkluxukm/image/upload/v1784578778/combimg8_v22x67.jpg",
+  "https://res.cloudinary.com/dtkluxukm/image/upload/v1784578778/combimg7_gm9emx.jpg",
+  "https://res.cloudinary.com/dtkluxukm/image/upload/v1784578778/combimg2_awr0gm.jpg",
+  "https://res.cloudinary.com/dtkluxukm/image/upload/v1784578777/combimg6_phkw3v.jpg",
+  "https://res.cloudinary.com/dtkluxukm/image/upload/v1784578777/combimg5_dswnk3.jpg",
+  "https://res.cloudinary.com/dtkluxukm/image/upload/v1784578776/combimg4_gxyqra.jpg",
+  "https://res.cloudinary.com/dtkluxukm/image/upload/v1784578776/combimg11_nun4sx.jpg",
+  "https://res.cloudinary.com/dtkluxukm/image/upload/v1784578776/combimg10_gmnpi5.jpg",
+  "https://res.cloudinary.com/dtkluxukm/image/upload/v1784578776/combimg3_jfxynm.jpg",
+  "https://res.cloudinary.com/dtkluxukm/image/upload/v1784578775/combimg9_lpwola.jpg",
+  "https://res.cloudinary.com/dtkluxukm/image/upload/v1784578776/combimg10_gmnpi5.jpg"
+];
 
 export default function Story() {
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
   return (
     <section
       id="company-story"
@@ -31,19 +49,28 @@ export default function Story() {
             </h2>
 
             {/* Founder Profile Block */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center pt-6 border-t border-border-custom">
-              {/* Creator High-Res Portrait */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start pt-6 border-t border-border-custom">
+              {/* Creator High-Res Portrait & Interactive Gallery */}
               <div className="md:col-span-5 space-y-4">
                 <div className="w-full bg-white border border-border-custom p-1.5 rounded-xl shadow-sm">
-                  <div className="w-full overflow-hidden rounded-lg border border-border-custom">
-                    <img
-                      src="https://res.cloudinary.com/dtkluxukm/image/upload/v1784036238/FB_IMG_1763989647831_imag2n.jpg"
-                      alt={companyStory.foundersName}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-500"
-                    />
+                  <div className="w-full aspect-[4/5] sm:aspect-[3/4] md:aspect-[4/5] overflow-hidden rounded-lg border border-border-custom bg-neutral-50 flex items-center justify-center">
+                    <AnimatePresence mode="wait">
+                      <motion.img
+                        key={activeImageIndex}
+                        initial={{ opacity: 0, scale: 0.98 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.98 }}
+                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                        src={GALLERY_IMAGES[activeImageIndex]}
+                        alt={companyStory.foundersName}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover"
+                      />
+                    </AnimatePresence>
                   </div>
                 </div>
+                
+                {/* Visual Label */}
                 <div className="space-y-1">
                   <p className="font-display font-semibold text-base text-text-black">
                     {companyStory.foundersName}
@@ -51,6 +78,34 @@ export default function Story() {
                   <p className="text-[10px] tracking-widest uppercase font-mono text-neutral-400">
                     {companyStory.role}
                   </p>
+                </div>
+
+                {/* Grid of 12 Thumbnails */}
+                <div className="pt-2 border-t border-border-custom">
+                  <p className="text-[9px] tracking-widest uppercase font-mono text-neutral-400 font-semibold mb-2.5">
+                    Gallery Collection ({activeImageIndex + 1} of {GALLERY_IMAGES.length})
+                  </p>
+                  <div className="grid grid-cols-4 gap-2">
+                    {GALLERY_IMAGES.map((imgUrl, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setActiveImageIndex(idx)}
+                        className={`aspect-square overflow-hidden rounded-lg border-2 transition-all duration-200 outline-none relative group cursor-pointer ${
+                          activeImageIndex === idx
+                            ? 'border-brand-green scale-95 shadow-sm'
+                            : 'border-border-custom hover:border-neutral-400 hover:scale-105'
+                        }`}
+                        aria-label={`View gallery image ${idx + 1}`}
+                      >
+                        <img
+                          src={imgUrl}
+                          alt={`Mathias Comb thumbnail ${idx + 1}`}
+                          referrerPolicy="no-referrer"
+                          className="w-full h-full object-cover transition-opacity duration-300"
+                        />
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
 
