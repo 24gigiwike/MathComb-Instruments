@@ -54,14 +54,16 @@ export default function Footer({ onNavigate, onContactClick }: FooterProps) {
               Support
             </h4>
             <div className="flex flex-col space-y-2 text-xs">
-              <button
-                onClick={onContactClick}
-                className="text-left text-neutral-600 hover:text-brand-green transition-colors cursor-pointer"
+              <a
+                href="https://wa.me/2349027504789?text=Hello%20Mathias%20Comb%2C%20I%20would%20like%20to%20make%20an%20inquiry%20about%20Mathcomb%E2%84%A2%20Musical%20Instruments."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-left text-neutral-600 hover:text-brand-green transition-colors cursor-pointer font-medium"
               >
-                Contact Us
-              </button>
+                Connect with us
+              </a>
               <p className="text-neutral-400 select-none">
-                Yaba, Lagos
+                Awoyaya, Lekki-Ajah, Lagos
               </p>
               <p className="text-neutral-400 select-none">
                 Nigeria

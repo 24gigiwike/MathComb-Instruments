@@ -41,7 +41,7 @@ export default function Introduction() {
               className="grid grid-cols-1 md:grid-cols-2 gap-8 text-neutral-500 text-sm sm:text-base leading-relaxed max-w-4xl"
             >
               <p>
-                The story of Mathcomb™ Musical Instruments is the story of Mathias Edema Eyeturami, a visionary musician who dared to challenge the acoustic boundaries of modern sound. In his workshop in Yaba, Lagos, Mathias spent years studying the vibrational frequencies of standard hair combs. He discovered that by micro-tuning high-tension spring-steel tines and physically coupling them with a seasoned acoustic soundboard, he could unlock a haunting, shimmering voice never heard before.
+                The story of Mathcomb™ Musical Instruments is the story of Mathias Edema Eyeturami, a visionary musician who dared to challenge the acoustic boundaries of modern sound. In his workshop in Awoyaya, Lekki-Ajah, Lagos, Mathias spent years studying the vibrational frequencies of standard hair combs. He discovered that by micro-tuning high-tension spring-steel tines and physically coupling them with a seasoned acoustic soundboard, he could unlock a haunting, shimmering voice never heard before.
               </p>
               <p>
                 Today, Mathcomb™ Musical Instruments represents the birthplace of this original acoustic category. Rather than reproducing conventional instruments, we craft hybrid resonators that directly house Mathias's patented comb-resonance engine. Each piece is a testament to Nigerian innovation, artistic persistence, and organic design, giving artists a totally new mechanical voice to express their music on stage, in studios, and in houses of worship.

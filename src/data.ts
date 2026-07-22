@@ -95,7 +95,7 @@ export const gallery: GalleryItem[] = [
     type: 'image',
     thumbnailUrl: '/src/assets/images/mathcomb_hero_acoustic_1783944204761.jpg',
     category: 'Acoustic Lab',
-    location: 'Yaba Workshop'
+    location: 'Awoyaya Workshop, Lekki-Ajah, Lagos'
   },
   {
     id: 'g3',
@@ -147,7 +147,7 @@ export const companyStory = {
     {
       year: '2019',
       title: 'The Comb Genesis',
-      description: 'Frustrated by flat acoustic profiles, Mathias began experimenting with the acoustic qualities of everyday plastic and metal combs in a tiny workshop in Yaba, analyzing their frequency waves.'
+      description: 'Frustrated by flat acoustic profiles, Mathias began experimenting with the acoustic qualities of everyday plastic and metal combs in a tiny workshop in Awoyaya, Lekki-Ajah, Lagos, analyzing their frequency waves.'
     },
     {
       year: '2021',

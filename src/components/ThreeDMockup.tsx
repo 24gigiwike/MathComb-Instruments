@@ -15,10 +15,10 @@ const PERFORMANCE_VIDEOS: PerformanceVideo[] = [
   {
     id: 'perf-1',
     videoUrl: 'https://res.cloudinary.com/dtkluxukm/video/upload/v1784034391/Fade_Away_cover-Short_rpwxgz.mp4',
-    venue: 'Yaba Workshop, Lagos',
+    venue: 'Awoyaya Workshop, Lekki-Ajah, Lagos',
     date: 'Oct 2019',
-    title: 'Performance Session 1: Yaba Workshop',
-    description: "An intimate live recording of the Mathcomb™ Musical Instruments acoustic resonance test, demonstrating its unique high-tension steel-tine resonance in Mathias's private Lagos laboratory."
+    title: 'Performance Session 1: Awoyaya Workshop',
+    description: "An intimate live recording of the Mathcomb™ Musical Instruments acoustic resonance test, demonstrating its unique high-tension steel-tine resonance in Mathias's private Awoyaya, Lekki-Ajah, Lagos laboratory."
   },
   {
     id: 'perf-2',
@@ -47,10 +47,10 @@ const PERFORMANCE_VIDEOS: PerformanceVideo[] = [
   {
     id: 'perf-5',
     videoUrl: 'https://res.cloudinary.com/dtkluxukm/video/upload/v1784033893/8ba2161d06cfe695f0af68c24b35aa8f_gfprm5.mp4',
-    venue: 'Yaba Research Lab, Lagos',
+    venue: 'Awoyaya Research Lab, Lekki-Ajah, Lagos',
     date: 'Jun 2020',
     title: 'Performance Session 5: Micro-Tine Adjustments',
-    description: 'Tuning session showcasing real-time steel tine feedback and structural decay analysis in the Yaba Lab.'
+    description: 'Tuning session showcasing real-time steel tine feedback and structural decay analysis in the Awoyaya Lab.'
   }
 ];
 
