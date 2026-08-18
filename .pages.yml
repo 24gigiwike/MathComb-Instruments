@@ -3,12 +3,13 @@ media:
   output: /media/
 
 content:
-  - name: video_records_v4   # Changed to instantly clear any lingering layout cache
+  - name: video_posts        # Fresh name to completely force-clear the CMS cache
     label: Performance Archive
     type: collection
-    path: _videos/
+    path: _videos/           # Folder sits right at the root of your repo
+    extension: json
     format: json
-    slug: "session-{{session_number}}.json" # This tells the modern system to save as a JSON file
+    slug: "session-{{session_number}}.json"
 
     fields:
       - name: session_number
