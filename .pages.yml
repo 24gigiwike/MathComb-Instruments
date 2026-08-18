@@ -5,7 +5,7 @@ media:
 content:
   - name: video_posts        # Fresh name to completely force-clear the CMS cache
     label: Performance Archive
-    type: file
+    type: collection
     path: _videos/           # Folder sits right at the root of your repo
     extension: json
     format: json
