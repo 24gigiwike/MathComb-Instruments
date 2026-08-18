@@ -1,138 +1,104 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Play, ArrowLeft, ArrowRight, Video, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import React, { useRef } from 'react';
+import { ArrowLeft, ArrowRight, Video } from 'lucide-react';
+import { motion } from 'motion/react';
 
-interface PerformanceVideo {
-  id: string;
-  videoUrl: string;
-  venue: string;
+export interface Performance {
+  session_number: number | string;
+  total_sessions: number | string;
   date: string;
-  title: string;
-  description: string;
+  video_url: string;
+  title?: string;
+  venue?: string;
+  description?: string;
 }
 
-const PERFORMANCE_VIDEOS: PerformanceVideo[] = [
-  {
-    id: 'perf-1',
-    videoUrl: 'https://res.cloudinary.com/dtkluxukm/video/upload/v1784034391/Fade_Away_cover-Short_rpwxgz.mp4',
-    venue: 'Awoyaya Workshop, Lekki-Ajah, Lagos',
-    date: 'Oct 2019',
-    title: 'Performance Session 1: Awoyaya Workshop',
-    description: "An intimate live recording of the Mathcomb™ Musical Instruments acoustic resonance test, demonstrating its unique high-tension steel-tine resonance in Mathias's private Awoyaya, Lekki-Ajah, Lagos laboratory."
-  },
-  {
-    id: 'perf-2',
-    videoUrl: 'https://res.cloudinary.com/dtkluxukm/video/upload/v1784034367/When_We_pray_tseovn.mp4',
-    venue: 'Grace Cathedral Sanctuary, Lagos',
-    date: 'Feb 2021',
-    title: 'Performance Session 2: Cathedral Acoustic Test',
-    description: 'A beautiful demonstration of pure acoustic echo and long resonance sustain inside the Grace Cathedral Sanctuary structure.'
-  },
-  {
-    id: 'perf-3',
-    videoUrl: 'https://res.cloudinary.com/dtkluxukm/video/upload/v1784034268/Eze_Ebube_Shorts_3_ldaxpj.mp4',
-    venue: 'Lagos Conservatory of Music',
-    date: 'Aug 2023',
-    title: 'Performance Session 3: Conservatory Exhibition',
-    description: 'Mathias demonstrating touch sensitivity and the rich mechanical overtone of the Mathcomb™ keyboard assembly.'
-  },
-  {
-    id: 'perf-4',
-    videoUrl: 'https://res.cloudinary.com/dtkluxukm/video/upload/v1784034163/Onishe_Iyanu_cover-Short_ejkoi6.mp4',
-    venue: 'Ikeja Sound Studio, Lagos',
-    date: 'Dec 2023',
-    title: 'Performance Session 4: Bowed Bridge Calibration',
-    description: 'High-frequency resonance capturing session using custom brass comb elements directly mounted to bowed string bridges.'
-  },
-  {
-    id: 'perf-5',
-    videoUrl: 'https://res.cloudinary.com/dtkluxukm/video/upload/v1784033893/8ba2161d06cfe695f0af68c24b35aa8f_gfprm5.mp4',
-    venue: 'Awoyaya Research Lab, Lekki-Ajah, Lagos',
-    date: 'Jun 2020',
-    title: 'Performance Session 5: Micro-Tine Adjustments',
-    description: 'Tuning session showcasing real-time steel tine feedback and structural decay analysis in the Awoyaya Lab.'
+export interface SiteConfig {
+  performances: Performance[];
+}
+
+/**
+ * Utility function to extract YouTube Video ID from standard and shortened URLs
+ * Handles:
+ * - https://www.youtube.com/watch?v=VIDEO_ID
+ * - https://youtube.com/watch?v=VIDEO_ID
+ * - https://youtu.be/VIDEO_ID
+ * - https://www.youtube.com/embed/VIDEO_ID
+ * - https://www.youtube.com/shorts/VIDEO_ID
+ */
+export function getYouTubeId(url: string): string | null {
+  if (!url) return null;
+  const regExp = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+  const match = url.match(regExp);
+  return match ? match[1] : null;
+}
+
+/**
+ * Helper to format date string to '%b %Y' (e.g. "Oct 2019")
+ */
+export function formatPerformanceDate(dateString: string): string {
+  if (!dateString) return '';
+  const parsed = new Date(dateString);
+  if (!isNaN(parsed.getTime())) {
+    return parsed.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
   }
-];
+  return dateString;
+}
+
+/**
+ * Dynamic Pages CMS Collection: site.performances
+ */
+export const site: SiteConfig = {
+  performances: [
+    {
+      session_number: 1,
+      total_sessions: 5,
+      date: '2019-10-01',
+      video_url: 'https://www.youtube.com/watch?v=ScMzIvxBSi4',
+      title: 'Performance Session 1: Awoyaya Workshop',
+      venue: 'Awoyaya Workshop, Lekki-Ajah, Lagos',
+      description: "An intimate live recording of the Mathcomb™ Musical Instruments acoustic resonance test, demonstrating its unique high-tension steel-tine resonance in Mathias's private Awoyaya, Lekki-Ajah, Lagos laboratory."
+    },
+    {
+      session_number: 2,
+      total_sessions: 5,
+      date: '2021-02-01',
+      video_url: 'https://youtu.be/dQw4w9WgXcQ',
+      title: 'Performance Session 2: Cathedral Acoustic Test',
+      venue: 'Grace Cathedral Sanctuary, Lagos',
+      description: 'A beautiful demonstration of pure acoustic echo and long resonance sustain inside the Grace Cathedral Sanctuary structure.'
+    },
+    {
+      session_number: 3,
+      total_sessions: 5,
+      date: '2023-08-01',
+      video_url: 'https://www.youtube.com/watch?v=3JZ_D3ELwOQ',
+      title: 'Performance Session 3: Conservatory Exhibition',
+      venue: 'Lagos Conservatory of Music',
+      description: 'Mathias demonstrating touch sensitivity and the rich mechanical overtone of the Mathcomb™ keyboard assembly.'
+    },
+    {
+      session_number: 4,
+      total_sessions: 5,
+      date: '2023-12-01',
+      video_url: 'https://youtu.be/9bZkp7q19f0',
+      title: 'Performance Session 4: Bowed Bridge Calibration',
+      venue: 'Ikeja Sound Studio, Lagos',
+      description: 'High-frequency resonance capturing session using custom brass comb elements directly mounted to bowed string bridges.'
+    },
+    {
+      session_number: 5,
+      total_sessions: 5,
+      date: '2020-06-01',
+      video_url: 'https://www.youtube.com/watch?v=kJQP7kiw5Fk',
+      title: 'Performance Session 5: Micro-Tine Adjustments',
+      venue: 'Awoyaya Research Lab, Lekki-Ajah, Lagos',
+      description: 'Tuning session showcasing real-time steel tine feedback and structural decay analysis in the Awoyaya Lab.'
+    }
+  ]
+};
 
 export default function ThreeDMockup() {
-  const [selectedVideo, setSelectedVideo] = useState<PerformanceVideo | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const modalVideoRef = useRef<HTMLVideoElement | null>(null);
-  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
-
-  const openModal = (video: PerformanceVideo) => {
-    setSelectedVideo(video);
-  };
-
-  const closeModal = () => {
-    if (modalVideoRef.current) {
-      modalVideoRef.current.pause();
-      modalVideoRef.current.currentTime = 0;
-    }
-    setSelectedVideo(null);
-  };
-
-  // Manage modal open side effects (focus trapping, Esc key, background scroll prevention)
-  useEffect(() => {
-    if (selectedVideo) {
-      // Prevent background scrolling
-      document.body.style.overflow = 'hidden';
-
-      // Focus close button for accessibility after a short render delay
-      const focusTimer = setTimeout(() => {
-        closeButtonRef.current?.focus();
-      }, 60);
-
-      // Listen for Escape key
-      const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === 'Escape') {
-          closeModal();
-        }
-
-        // Simple accessible focus trap inside modal
-        if (e.key === 'Tab') {
-          const modalElement = document.getElementById('video-modal-content');
-          if (!modalElement) return;
-
-          const focusableElements = modalElement.querySelectorAll(
-            'button, video, [tabindex]:not([tabindex="-1"])'
-          );
-          if (focusableElements.length === 0) return;
-
-          const firstElement = focusableElements[0] as HTMLElement;
-          const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
-
-          if (e.shiftKey) {
-            if (document.activeElement === firstElement) {
-              lastElement.focus();
-              e.preventDefault();
-            }
-          } else {
-            if (document.activeElement === lastElement) {
-              firstElement.focus();
-              e.preventDefault();
-            }
-          }
-        }
-      };
-
-      window.addEventListener('keydown', handleKeyDown);
-
-      // Try auto-playing the video
-      if (modalVideoRef.current) {
-        modalVideoRef.current.currentTime = 0;
-        modalVideoRef.current.play().catch((err) => {
-          console.log('Autoplay play request prevented by browser policies:', err);
-        });
-      }
-
-      return () => {
-        document.body.style.overflow = '';
-        window.removeEventListener('keydown', handleKeyDown);
-        clearTimeout(focusTimer);
-      };
-    }
-  }, [selectedVideo]);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
@@ -169,7 +135,7 @@ export default function ThreeDMockup() {
               <span className="font-semibold text-text-black">Mathcomb™ Musical Instruments</span>
             </h2>
             <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed font-sans">
-              A side-by-side showcase of five authentic live performances, studio sessions, and workshop experiments led by inventor Mathias Edema Eyeturami in Lagos, Nigeria.
+              A side-by-side showcase of authentic live performances, studio sessions, and workshop experiments led by inventor Mathias Edema Eyeturami.
             </p>
           </div>
 
@@ -192,59 +158,65 @@ export default function ThreeDMockup() {
           </div>
         </div>
 
-        {/* Side-by-Side Horizontal Snap Scroller */}
+        {/* ========================================================================= */}
+        {/* >>> DYNAMIC PERFORMANCE ARCHIVE SECTION START (Pages CMS Collection) <<< */}
+        {/* ========================================================================= */}
         <div 
           ref={scrollContainerRef}
           className="flex overflow-x-auto gap-6 pb-6 pt-2 px-1 scroll-smooth scrollbar-none snap-x snap-mandatory"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          {PERFORMANCE_VIDEOS.map((perf, index) => {
+          {site.performances.map((performance, index) => {
+            const youtubeId = getYouTubeId(performance.video_url);
+            const formattedDate = formatPerformanceDate(performance.date);
+
             return (
               <motion.div
-                key={perf.id}
+                key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.6, delay: Math.min(index * 0.08, 0.4), ease: [0.16, 1, 0.3, 1] }}
-                className="w-[290px] sm:w-[380px] flex-shrink-0 bg-white border border-border-custom p-4 flex flex-col justify-between snap-start group relative hover:shadow-md transition-shadow duration-300 rounded-xl cursor-pointer"
-                onClick={() => openModal(perf)}
+                className="w-[300px] sm:w-[380px] flex-shrink-0 bg-white border border-border-custom p-4 flex flex-col justify-between snap-start group relative hover:shadow-md transition-shadow duration-300 rounded-xl"
               >
-                {/* Meta Header */}
-                <div className="flex items-center justify-between text-[9px] uppercase tracking-wider text-neutral-400 font-mono mb-3">
-                  <span className="flex items-center gap-1.5 font-semibold text-brand-green">
-                    <Video className="w-3 h-3" />
-                    Session {index + 1} of 5
-                  </span>
-                  <span>{perf.date}</span>
-                </div>
-
-                {/* Video Container Frame with hover play cues */}
-                <div className="relative aspect-video w-full overflow-hidden border border-border-custom bg-neutral-950 flex items-center justify-center rounded-lg">
-                  <video
-                    src={perf.videoUrl}
-                    loop
-                    muted
-                    playsInline
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500 ease-out"
-                  />
-
-                  {/* Playback Control Overlay */}
-                  <div className="absolute inset-0 bg-neutral-950/25 group-hover:bg-neutral-950/45 transition-colors duration-300 flex items-center justify-center">
-                    <div
-                      className="p-3.5 rounded-full bg-white text-text-black scale-95 group-hover:scale-110 active:scale-95 transition-all duration-300 shadow-md flex items-center justify-center"
-                      aria-label={`Play Session ${index + 1}`}
-                    >
-                      <Play className="w-4 h-4 fill-current text-text-black ml-0.5" />
+                {/* 16:9 Responsive Video Iframe Embed Player */}
+                <div className="relative aspect-video w-full overflow-hidden border border-border-custom bg-black rounded-lg">
+                  {youtubeId ? (
+                    <iframe
+                      src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
+                      title={performance.title || `Session ${performance.session_number} of ${performance.total_sessions}`}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="w-full h-full border-0"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center text-neutral-400 text-xs p-4 text-center">
+                      <Video className="w-6 h-6 mb-2 text-neutral-500" />
+                      <span>Video Unavailable</span>
                     </div>
-                  </div>
+                  )}
                 </div>
 
+                {/* Meta Text Pattern directly underneath iframe */}
+                <div className="mt-3 text-[11px] font-mono font-medium text-neutral-600 tracking-wide">
+                  Session {performance.session_number} of {performance.total_sessions} • {formattedDate}
+                </div>
 
+                {/* Optional Title / Venue description if present */}
+                {performance.title && (
+                  <div className="mt-1">
+                    <h3 className="font-display font-medium text-sm text-text-black tracking-tight line-clamp-1">
+                      {performance.title}
+                    </h3>
+                  </div>
+                )}
               </motion.div>
             );
           })}
         </div>
+        {/* ========================================================================= */}
+        {/* >>> DYNAMIC PERFORMANCE ARCHIVE SECTION END <<<                          */}
+        {/* ========================================================================= */}
         
         {/* Footnote of authenticity */}
         <div className="flex items-center justify-center border-t border-border-custom pt-6 font-mono text-[9px] text-neutral-400 tracking-wider uppercase">
@@ -252,59 +224,7 @@ export default function ThreeDMockup() {
         </div>
 
       </div>
-
-      {/* Lightbox / Video Modal experience */}
-      <AnimatePresence>
-        {selectedVideo && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-6 md:p-10"
-            onClick={closeModal}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="modal-title"
-          >
-            {/* Modal content box */}
-            <motion.div
-              id="video-modal-content"
-              initial={{ scale: 0.95, y: 15 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.95, y: 15 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-4xl bg-neutral-900 border border-neutral-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Close Button top-right */}
-              <button
-                ref={closeButtonRef}
-                onClick={closeModal}
-                className="absolute top-4 right-4 z-10 p-2.5 rounded-full bg-black/60 hover:bg-black/90 text-white/80 hover:text-white transition-all cursor-pointer outline-none focus:ring-2 focus:ring-brand-green/50"
-                aria-label="Close modal"
-              >
-                <X className="w-4 h-4" />
-              </button>
-
-              {/* 16:9 Responsive Video Frame */}
-              <div className="relative aspect-video w-full bg-black">
-                <video
-                  ref={modalVideoRef}
-                  src={selectedVideo.videoUrl}
-                  controls
-                  autoPlay
-                  playsInline
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
     </section>
   );
 }
+
