@@ -3,33 +3,31 @@ media:
   output: /media/
 
 content:
-  - name: video_database
+  - name: videos           # Changed name to reset browser cache completely
     label: Performance Archive
-    type: file
-    path: src/data/videos.json
+    type: collection       # Uses clean collection format instead of single file
+    path: public/data/videos/ # Folder where individual json files go
+    extension: json
     format: json
+    slug: "session-{{session_number}}"
 
     fields:
-      - name: videos
-        label: Performance Sessions List
-        type: list              # Creates the list container
-        fields:                 # Indented exactly two spaces deeper than name
-          - name: session_number
-            label: Session Number
-            type: number
-            required: true
+      - name: session_number
+        label: Session Number
+        type: number
+        required: true
 
-          - name: total_sessions
-            label: Total Sessions
-            type: number
-            required: true
+      - name: total_sessions
+        label: Total Sessions
+        type: number
+        required: true
 
-          - name: date
-            label: Session Date
-            type: date
-            required: true
+      - name: date
+        label: Session Date
+        type: date
+        required: true
 
-          - name: video_url
-            label: YouTube Video URL
-            type: string
-            required: true
+      - name: video_url
+        label: YouTube Video URL
+        type: string
+        required: true
