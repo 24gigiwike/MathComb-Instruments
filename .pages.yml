@@ -6,7 +6,7 @@ content:
   - name: videos           # Changed name to reset browser cache completely
     label: Performance Archive
     type: collection       # Uses clean collection format instead of single file
-    path: public/data/videos/ # Folder where individual json files go
+    path: src/data/videos/ # Folder where individual json files go
     extension: json
     format: json
     slug: "session-{{session_number}}"
