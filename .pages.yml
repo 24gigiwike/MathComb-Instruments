@@ -9,7 +9,7 @@ content:
     path: _videos/           # Folder sits right at the root of your repo
     extension: json
     format: json
-    slug: "session-{{session_number}}"
+    slug: "session-{{session_number}}.json"
 
     fields:
       - name: session_number
