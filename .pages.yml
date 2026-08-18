@@ -3,31 +3,34 @@ media:
   output: /media/
 
 content:
-  - name: performances
+  - name: video_database
     label: Performance Archive
-    type: collection
-    path: _performances/
-    extension: json        # Force the extension to be json
-    format: json           # Force the data engine to save as a JSON object
-    slug: "session-{{session_number}}"
+    type: file             # Forces Pages CMS to read/write ONE central database file
+    path: public/data/videos.json # Change to 'src/data/videos.json' if using Vite/Next.js source paths
+    format: json
 
     fields:
-      - name: session_number
-        label: Session Number
-        type: number
-        required: true
+      - name: videos
+        label: Performance Sessions List
+        type: list         # Creates an expandable, drag-and-drop table list
+        shrink: true
+        fields:
+          - name: session_number
+            label: Session Number
+            type: number
+            required: true
 
-      - name: total_sessions
-        label: Total Sessions
-        type: number
-        required: true
+          - name: total_sessions
+            label: Total Sessions
+            type: number
+            required: true
 
-      - name: date
-        label: Session Date
-        type: date
-        required: true
+          - name: date
+            label: Session Date
+            type: date
+            required: true
 
-      - name: video_url
-        label: Video URL / Link
-        type: string
-        required: true
+          - name: video_url
+            label: YouTube Video URL
+            type: string
+            required: true
