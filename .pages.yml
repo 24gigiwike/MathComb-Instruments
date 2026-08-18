@@ -6,7 +6,7 @@ content:
   - name: video_database
     label: Performance Archive
     type: file             # Forces Pages CMS to read/write ONE central database file
-    path: public/data/videos.json # Change to 'src/data/videos.json' if using Vite/Next.js source paths
+    path: src/data/videos.json # Change to 'src/data/videos.json' if using Vite/Next.js source paths
     format: json
 
     fields:
