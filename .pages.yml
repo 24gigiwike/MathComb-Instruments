@@ -12,7 +12,7 @@ content:
     fields:
       - name: videos
         label: Performance Sessions List
-        type: list              # Creates the list container
+        type: file              # Creates the list container
         fields:                 # Indented exactly two spaces deeper than name
           - name: session_number
             label: Session Number
