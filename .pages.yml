@@ -1,19 +1,16 @@
-# Define where media assets are saved inside your repo
 media:
   input: media/
   output: /media/
 
-# Define the Performance Archive Collection
 content:
   - name: performances
     label: Performance Archive
     type: collection
     path: _performances/
-    extension: md
-    format: front-matter # CRITICAL: This tells Pages CMS to look between the --- lines
+    extension: json        # Force the extension to be json
+    format: json           # Force the data engine to save as a JSON object
     slug: "session-{{session_number}}"
 
-    # Fields MUST perfectly match the keys used inside your markdown files
     fields:
       - name: session_number
         label: Session Number
