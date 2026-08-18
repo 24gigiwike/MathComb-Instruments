@@ -5,16 +5,15 @@ media:
 content:
   - name: video_database
     label: Performance Archive
-    type: file             # Forces Pages CMS to read/write ONE central database file
-    path: src/data/videos.json # Change to 'src/data/videos.json' if using Vite/Next.js source paths
+    type: file
+    path: public/data/videos.json
     format: json
 
     fields:
       - name: videos
         label: Performance Sessions List
-        type: list         # Creates an expandable, drag-and-drop table list
-        shrink: true
-        fields:
+        type: list              # Creates the list container
+        fields:                 # Indented exactly two spaces deeper than name
           - name: session_number
             label: Session Number
             type: number
