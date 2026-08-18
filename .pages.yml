@@ -6,7 +6,7 @@ content:
   - name: video_database
     label: Performance Archive
     type: file
-    path: public/data/videos.json
+    path: src/data/videos.json
     format: json
 
     fields:
