@@ -1,15 +1,25 @@
 import React from 'react';
-import videoData from '../data/videos.json';
 
 export interface VideoItem {
-  session_number: number;
-  total_sessions: number;
+  session_number: number | string;
+  total_sessions: number | string;
   date: string;
   video_url: string;
   title?: string;
   venue?: string;
   description?: string;
 }
+
+// Automatically import all individual JSON session files from the root `_videos/` directory
+const videoModules = import.meta.glob<VideoItem | { default: VideoItem }>(
+  ['/_videos/*.json', '../../_videos/*.json'],
+  { eager: true }
+);
+
+// Map the imported JSON file modules into an array of VideoItem objects
+const videoCollection: VideoItem[] = Object.values(videoModules).map((mod: any) => {
+  return mod.default || mod;
+});
 
 /**
  * Utility function to extract YouTube Video ID
@@ -49,8 +59,8 @@ export function formatPerformanceDate(dateString: string): string {
 }
 
 export default function ThreeDMockup() {
-  // Sort videos dynamically from the JSON database by session_number
-  const sorted_videos = [...(videoData.videos || [])].sort(
+  // Sort videos dynamically by session_number from the loaded _videos collection
+  const sorted_videos = [...videoCollection].sort(
     (a, b) => Number(a.session_number) - Number(b.session_number)
   );
 
@@ -79,7 +89,7 @@ export default function ThreeDMockup() {
         </div>
 
         {/* ========================================================================= */}
-        {/* >>> DYNAMIC PERFORMANCE ARCHIVE SECTION START (site.videos loop) <<<     */}
+        {/* >>> DYNAMIC PERFORMANCE ARCHIVE SECTION START (_videos folder loop) <<<  */}
         {/* ========================================================================= */}
         <div className="performance-archive-grid">
           {sorted_videos.length > 0 ? (
@@ -127,5 +137,6 @@ export default function ThreeDMockup() {
     </section>
   );
 }
+
 
 
