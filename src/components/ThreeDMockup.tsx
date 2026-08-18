@@ -1,4 +1,5 @@
 import React from 'react';
+import videoData from '../data/videos.json';
 
 export interface VideoItem {
   session_number: number;
@@ -8,11 +9,6 @@ export interface VideoItem {
   title?: string;
   venue?: string;
   description?: string;
-}
-
-export interface SiteConfig {
-  videos: VideoItem[];
-  performances?: VideoItem[];
 }
 
 /**
@@ -52,52 +48,9 @@ export function formatPerformanceDate(dateString: string): string {
   return dateString;
 }
 
-/**
- * Dynamic Pages CMS Collection: site.videos
- */
-export const site: SiteConfig = {
-  videos: [
-    {
-      session_number: 1,
-      total_sessions: 5,
-      date: '2019-10-01',
-      video_url: 'https://youtube.com/watch?v=ScMzIvxBSi4',
-      title: 'Performance Session 1: Awoyaya Workshop'
-    },
-    {
-      session_number: 2,
-      total_sessions: 5,
-      date: '2021-02-01',
-      video_url: 'https://youtu.be/dQw4w9WgXcQ',
-      title: 'Performance Session 2: Cathedral Acoustic Test'
-    },
-    {
-      session_number: 3,
-      total_sessions: 5,
-      date: '2023-08-01',
-      video_url: 'https://youtube.com/watch?v=3JZ_D3ELwOQ',
-      title: 'Performance Session 3: Conservatory Exhibition'
-    },
-    {
-      session_number: 4,
-      total_sessions: 5,
-      date: '2023-12-01',
-      video_url: 'https://youtu.be/9bZkp7q19f0',
-      title: 'Performance Session 4: Bowed Bridge Calibration'
-    },
-    {
-      session_number: 5,
-      total_sessions: 5,
-      date: '2020-06-01',
-      video_url: 'https://youtube.com/watch?v=kJQP7kiw5Fk',
-      title: 'Performance Session 5: Micro-Tine Adjustments'
-    }
-  ]
-};
-
 export default function ThreeDMockup() {
-  // Sort videos dynamically by session_number
-  const sorted_videos = [...(site.videos || site.performances || [])].sort(
+  // Sort videos dynamically from the JSON database by session_number
+  const sorted_videos = [...(videoData.videos || [])].sort(
     (a, b) => Number(a.session_number) - Number(b.session_number)
   );
 
