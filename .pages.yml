@@ -10,31 +10,27 @@ content:
     type: collection
     path: _performances/
     extension: md
-    format: front-matter
-    slug: "session-{{session_number}}" # Saves files as session-1.md, session-2.md, etc.
+    format: front-matter # CRITICAL: This tells Pages CMS to look between the --- lines
+    slug: "session-{{session_number}}"
 
-    # Form fields displayed in the Pages CMS admin dashboard
+    # Fields MUST perfectly match the keys used inside your markdown files
     fields:
       - name: session_number
         label: Session Number
         type: number
         required: true
-        help: Enter the number sequence (e.g., 1, 2, 3)
 
       - name: total_sessions
         label: Total Sessions
         type: number
         required: true
-        help: Enter the total count in the series (e.g., 5)
 
       - name: date
         label: Session Date
         type: date
         required: true
-        help: Select the date (e.g., August 2023)
 
       - name: video_url
         label: Video URL / Link
         type: string
         required: true
-        help: Paste the video link here
